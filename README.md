@@ -23,32 +23,56 @@ A full subtractor is a combinational circuit that performs subtraction involving
 ![full-subtractor6](https://user-images.githubusercontent.com/36288975/166112541-24c68359-3de8-4674-ae22-8272ffc385ed.png)
 
 
-Diff = A ⊕ B ⊕ Bin B = A'Bin + A'B + BBin
-
-## Procedure
-
-
-
-Write the detailed procedure here 
-
+Diff = A ⊕ B ⊕ Bin B = A'Bin + A'B + B
 
 ## Program:
 /*
 Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Manoj S
+RegisterNumber:  22009066
 */
-
+## half subractor
+```
+module half_sub(x, y, d, b);
+input x,y;
+output d,b;
+wire w1;
+xor(d,x,y);
+not(w1, x);
+and(b, w1, y);
+endmodule
+````
+##full subractor
+```
+module full_sub(A,B,C,diff,borrow);
+input A,B,C;
+output diff,borrow;
+wire p;
+not (p,A);
+assign borrow=((p&B)|(p&C)|(B&C));
+assign diff=((A^B)^C);
+endmodule
+```
 ## Output:
 
 ## Truthtable
-
+#half subractor
+![halftt](half_sub_tt.png)
+#full_subractotr
+![fulltt](full_sub_tt.png)
 
 
 ##  RTL realization
+#half subractor
+![halfrtl](half_sub_rtl.png)
+#full subractor
+![fullrtl](full_sub_rtl.png)
 
 
 ## Timing diagram 
-
+#half subractor
+![halftiming](half_sub_timing.png)
+#full subractor
+![fulltiming](full_sub_timing.png)
 ## Result:
 Thus the half subtractor and full subtractor circuits are designed and the truth tables is verified using quartus software.
